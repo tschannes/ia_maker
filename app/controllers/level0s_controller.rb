@@ -5,4 +5,8 @@ class Level0sController < ApplicationController
 		@level1s = Level1.all
 		@level2s = Level2.all
 	end
+
+	def show
+		@item = Level0.find(params[:id])
+	end
 end

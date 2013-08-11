@@ -9,4 +9,15 @@ class Level0sController < ApplicationController
 	def show
 		@item = Level0.find(params[:id])
 	end
+
+	def new
+		@item = Level0.new(params[:level0])
+	end
+
+	def create
+		params.permit!
+		@level0 = Level0.new(params[:level0])
+		
+	end
+
 end

@@ -7,6 +7,7 @@
 	<meta name="author" content="Matt Everson of Astuteo, LLC – http://astuteo.com/slickmap" />
 	<title>IaMaker</title>
 	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= stylesheet_link_tag "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" %>
 	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	  <%= csrf_meta_tags %>
 </head>
@@ -26,7 +27,7 @@
 		<%= yield %>
 
 	</div>
-	
+	<% javascript_include_tag "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js" %>
 </body>
 
 </html>

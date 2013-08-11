@@ -10,5 +10,7 @@
  *
  *= require_self
  *= require slickmap.css
+ *= require jquery.ui.all
+ *= require jquery.modal
  *= require_tree .
  */

@@ -1,17 +1,19 @@
 <ul id="primaryNav" class="col4">
 	<li id="home"><%= link_to 'Home', root_path %></li>
+	
 	<% if @level0s %>
+	
 	<% @level0s.each do |first| %>
-			<li><%= link_to first.title, polymorphic_url([first]) %></li>
+			<li><%= link_to first.title, first_path(first)  %>
 				<ul>
 				
 				<% if @level1s %>
 				<% @level1s.each do |second| %>
-						<li><%= link_to second.title, polymorphic_url([first, second]) %>
+						<li><%= link_to second.title, first_second_path(first, second) %>
 							<ul>
 								<% if @level2s %>
 								<% @level2s.each do |third| %>
-									<li><%= link_to third.title, polymorphic_url([first, second, third]) %></li>
+									<li><%= link_to third.title, first_second_third_path(first, second, third) %></li>
 								<% end %>
 								<% end %>
 							</ul>

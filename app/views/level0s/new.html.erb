@@ -1,7 +1,7 @@
-<%= form_for :level0 do |f| %>
+<%= form_for @level0, :url => { :action => "create" }, :html => {:class => 'nifty-form'} do |f| %>
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_area :title %>
   </p>
  
   <p>
@@ -18,3 +18,4 @@
     <%= f.submit %>
   </p>
 <% end %>
+

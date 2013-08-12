@@ -22,16 +22,18 @@ some = Level0.create!(
 second = Level1.create!(
 	title: "company",
 	overview: "all about the company",
-	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis."
+	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis.",
+	level0_id: first.id
 	)
 third = Level2.create!(
 	title: "the boss",
 	overview: "interview with the chief in charge",
-	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis."
+	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis.",
+	level1_id: second.id
 	)
 dude = Level2.create!(
 	title: "the Queen",
-	level1_id: 5,
 	overview: "interview with the queen in charge",
-	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis."
+	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis.",
+	level1_id: third.id
 	)

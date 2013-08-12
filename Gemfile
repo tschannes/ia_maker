@@ -20,9 +20,12 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'jquery-modal-rails'
+# gem 'jquery-ui-rails'
+# gem 'jquery-modal-rails'
+# gem 'client_side_validations'
 
+
+#development
 gem 'better_errors'
 gem 'pry'
 

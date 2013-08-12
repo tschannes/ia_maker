@@ -11,13 +11,22 @@ class Level0sController < ApplicationController
 	end
 
 	def new
-		@item = Level0.new(params[:level0])
+		@level0 = Level0.new
 	end
 
+
 	def create
-		params.permit!
-		@level0 = Level0.new(params[:level0])
-		
+		@level0 = Level0.new(level0_params)
+		if @level0.save
+			redirect_to root_path, notice: "Item added."
+		else
+			render :action => :new, notice: "Something did not work as planned."
+		end
+	end
+
+	private
+	def level0_params
+		params.require(:level0).permit(:title, :overview, :description)
 	end
 
 end

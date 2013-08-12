@@ -1,5 +1,10 @@
-<h1><%= @item.title %></h1>
+<div class="well well-large">
 
-<h4><%= @item.overview %></h4>
+	<h1><%= @item.title %></h1>
 
-<p><%= @item.description %></p>
+	<h4><%= @item.overview %></h4>
+
+	<p><%= @item.description %></p>
+	<%= link_to 'go back', root_path, class: 'btn' %>
+
+</div>

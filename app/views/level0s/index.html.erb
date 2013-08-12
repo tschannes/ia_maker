@@ -1,3 +1,12 @@
+<div class="sitemap">
+		
+		<h1>Project Title</h1>
+		<h2>Preliminary Site Map &mdash; Version 1.0</h2>
+	
+		<ul id="utilityNav">
+			<li><a href="/register">Register</a></li>
+			<li><a href="/login">Log In</a></li>
+		</ul>
 <ul id="primaryNav" class="col4">
 	<li id="home"><%= link_to 'Home', root_path %></li>
 	
@@ -7,20 +16,21 @@
 			<li><%= link_to first.title, first_path(first)  %>
 				<ul>
 				
-				<% if @level1s %>
-				<% @level1s.each do |second| %>
+				<% if first.level1s %>
+				
+				<% first.level1s.each do |second| %>
 						<li><%= link_to second.title, first_second_path(first, second) %>
 							<ul>
-								<% if @level2s %>
-								<% @level2s.each do |third| %>
+								<% if second.level2s %>
+								<% second.level2s.each do |third| %>
 									<li><%= link_to third.title, first_second_third_path(first, second, third) %></li>
 								<% end %>
-									<li><%= link_to '+', new_first_second_third_path(first, second), :remote => true %></li>
+									<li><%= link_to '+', new_first_second_third_path(first, second) %></li>
 								<% end %>
 							</ul>
 						</li>
 				<% end %>
-					<li><%= link_to '+', new_first_second_path(first), :remote => true %></li>
+					<li><%= link_to '+', new_first_second_path(first) %></li>
 				<% end %>
 				</ul>
 			</li>
@@ -28,3 +38,4 @@
 		<li><%= link_to '+', new_first_path %></li>
 	<% end %>
 </ul>
+</div>

@@ -13,7 +13,7 @@
 	<% if @level0s %>
 	
 	<% @level0s.each do |first| %>
-			<li><%= link_to first.title, first_path(first)  %>
+			<li class="do"><%= link_to first.title, first_path(first) %>
 				<ul>
 				
 				<% if first.level1s %>

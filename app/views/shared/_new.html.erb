@@ -1,0 +1,21 @@
+<%= form_for @item, :url => { :action => "create" } do |f| %>
+  <h2>/home/<%= @item.title %></h2>
+	  <p>
+	    <%= f.label :title, class: 'lead' %>
+	    <%= f.text_field :title, class: 'span8' %>
+	  </p>
+	 
+	  <p>
+	    <%= f.label :overview, class: 'lead' %>
+	    <%= f.text_field :overview, class: 'span8'  %>
+	  </p>
+
+	  <p>
+	    <%= f.label :description, class: 'lead' %>
+	    <%= f.text_area :description, class: 'span8'  %>
+	  </p>
+
+	  <p>
+	    <%= f.submit "save #{@item.title}", { :class => 'btn btn-primary' } %>
+	  </p>
+<% end %>

@@ -9,9 +9,8 @@ class Level2sController < ApplicationController
 	end
 
 	def new
-
 		level1 = Level1.find(params[:second_id])
-		@level2 = level1.level2s.build
+		@item = level1.level2s.build
 
 	end
 

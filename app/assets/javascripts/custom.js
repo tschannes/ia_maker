@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var container_width = (100 / ($('#primaryNav>li>ul').children().size() -1)) + '%';
+	var container_width = (100 / ($('.do').size() +1)) + '%';
 
 	$("ul li a:contains(+)").css("opacity", 0.5);
 

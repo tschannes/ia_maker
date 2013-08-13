@@ -11,9 +11,32 @@ class Level0sController < ApplicationController
 	end
 
 	def new
-		@level0 = Level0.new
-		@level1 = @level0.level1s.build
+		@item = Level0.new
+		@level1 = @item.level1s.build
 		@level2 = @level1.level2s.build
+	end
+
+	def edit
+		@item = Level0.find(params[:id])
+		respond_to do |format|
+			format.html # show.html.erb
+			format.json { render json: @item }
+		end
+	end
+
+	def update
+		@item = Level0.find(params[:id])
+		respond_to do |format|
+			if @item.update_attributes(level_params)
+				format.html { redirect_to root_path,
+				notice: 'item was successfully updated.' }
+				format.json { head :no_content }
+			else
+				format.html { render action: "edit" }
+				format.json { render json: @item.errors,
+				status: :unprocessable_entity }
+			end
+		end
 	end
 
 
@@ -27,6 +50,20 @@ class Level0sController < ApplicationController
 			redirect_to root_path
 		else
 			render :action => :new, notice: "Something did not work as planned."
+		end
+	end
+
+	def destroy
+		@item = Level0.find(params[:id])
+		@subs = @item.level1s
+		@subs.destroy if @subs
+		@item.destroy
+		flash[:alert] = "The item was deleted."
+		redirect_to root_path
+
+		respond_to do |format|
+			format.html { root_path }
+			format.xml  { head :ok }
 		end
 	end
 

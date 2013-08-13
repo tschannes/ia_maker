@@ -1,22 +1,2 @@
-<%= form_for @level0, :url => { :action => "create" } do |f| %>
-  <h2>Level1</h2>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
- 
-  <p>
-    <%= f.label :overview %><br>
-    <%= f.text_field :overview %>
-  </p>
-
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.submit :class => 'btn' %>
-  </p>
-<% end %>
+<%= render 'shared/new' %>
 

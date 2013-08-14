@@ -1,5 +1,5 @@
 <%= form_for @item, :url => { :action => "create" } do |f| %>
-  <h2>/home/<%= @item.title %></h2>
+  <h2>New entry</h2>
 	  <p>
 	    <%= f.label :title, class: 'lead' %>
 	    <%= f.text_field :title, class: 'span8' %>

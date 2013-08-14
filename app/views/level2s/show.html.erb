@@ -1,1 +1,11 @@
-<%= render 'shared/show' %>
+<div class="well well-large span8">
+
+	<h2><%= @item.title %></h2>
+
+	<p class="lead"><%= @item.overview %></p>
+
+	<p><%= @item.description %></p>
+	<%= link_to 'go back', root_path, class: 'btn btn-primary' %>
+	<%= link_to 'edit', edit_first_second_third_path(:params => params), class: 'btn btn-primary' %>
+	<%= link_to 'delete', first_second_third_path(:params => params), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-primary ' %>
+</div>

@@ -25,6 +25,39 @@ class Level2sController < ApplicationController
 		end
 	end
 
+	def edit
+		@item = Level0.find(params[:first_id]).level1s.find(params[:second_id]).level2s.find(params[:id])
+		
+		respond_to do |format|
+			format.html # show.html.erb
+			format.json { render json: @item }
+		end
+	end
+
+	def update
+		@item = Level0.find(params[:first_id]).level1s
+		.find(params[:second_id]).level2s.find(params[:id])
+		respond_to do |format|
+			if @item.update_attributes(level_params)
+				format.html { redirect_to root_path,
+				notice: 'item was successfully updated.' }
+				format.json { head :no_content }
+			else
+				format.html { render action: "edit" }
+				format.json { render json: @item.errors,
+				status: :unprocessable_entity }
+			end
+		end
+	end
+
+	def destroy
+		@item = Level0.find(params[:first_id]).level1s
+		.find(params[:second_id]).level2s.find(params[:id])
+		@item.destroy
+		flash[:alert] = "The item was deleted."
+		redirect_to root_path
+	end
+
 	private
 	def level_params
 		params.require(:level2).permit(:title, :overview, :description)

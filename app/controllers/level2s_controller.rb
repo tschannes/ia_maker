@@ -1,11 +1,12 @@
 class Level2sController < ApplicationController
 
-	def show
-		@level2s = Level2.all
+	def index
+		@items = Level2.all
 	end
 
 	def show
-		@item = Level2.find(params[:id])
+		item = Level1.find(params[:id])
+		@items = Array(item)
 	end
 
 	def new

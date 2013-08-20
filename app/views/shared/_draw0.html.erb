@@ -1,0 +1,28 @@
+<li id="home"><%= link_to link_helper, root_path %></li>
+	<% if @items %>
+	<% @items.each do |first| %>
+
+			<li class="do"><%= link_to first.title, first_path(first) %>
+				<ul>
+				
+				<% if first.level1s %>
+				
+				<% first.level1s.each do |second| %>
+						<li><%= link_to second.title, first_second_path(first, second) %>
+							<ul>
+								<% if second.level2s %>
+								<% second.level2s.each do |third| %>
+									<li><%= link_to third.title, first_second_third_path(first, second, third) %></li>
+								<% end %>
+									<li><%= link_to '+', new_first_second_third_path(first, second) %></li>
+								<% end %>
+							</ul>
+						</li>
+				<% end %>
+					<li><%= link_to '+', new_first_second_path(first) %></li>
+				<% end %>
+				</ul>
+			</li>
+	<% end %>
+	<li><%= link_to '+', new_first_path %></li>
+<% end %>

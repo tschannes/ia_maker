@@ -14,14 +14,14 @@
 
 <body>
 	<div class="navbar navbar-fixed-top navbar-inverse">
-	<div class="col10">
+	
 	  <div class="navbar-inner">
 	    <%=  link_to "home", root_path, :class => 'brand' %>
-	    <ul class="nav pull-right">
+	    <ul class="nav left2 span10">
 	      <li class="active"><a href="#" >Login</a></li>
 	    </ul>
 	  </div>
-	</div>
+	
 	</div>
 	<% [:notice, :error, :alert].each do |level| %>
 	  <% unless flash[level].blank? %>

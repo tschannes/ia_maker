@@ -1,12 +1,13 @@
 class Level1sController < ApplicationController
 
 	def index
-		@item = Level1.all
-		@item.seconds = @item.level2s.build
+		@items = Level1.all
+		@items.seconds = @item.level2s.build
 	end
 
 	def show
-		@item = Level1.find(params[:id])
+		items = Level1.find(params[:id])
+		@items = Array(items)
 	end
 
 	def new

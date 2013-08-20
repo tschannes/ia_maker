@@ -18,7 +18,14 @@
 	  <div class="navbar-inner">
 	    <%=  link_to "home", root_path, :class => 'brand' %>
 	    <ul class="nav left2 span10">
-	      <li class="active"><a href="#" >Login</a></li>
+	      <!-- <li class="active"><a href="#" >Login</a></li> -->
+	      <% if current_user %>
+  			Logged in as <%= current_user.email %>.
+  			<%= link_to "Log out", logout_path %>
+		  <% else %>
+			<%= link_to "register", signup_path, :class => 'btn btn-inverse' %>
+		  	<%= link_to "login", login_path, :class => 'btn btn-inverse' %>
+		  <% end %>
 	    </ul>
 	  </div>
 	

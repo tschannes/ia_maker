@@ -1,3 +1,4 @@
+<ul id="primaryNav">
 <li id="home"><%= link_to link_helper, root_path %></li>
 	<% if @items %>
 	<% @items.each do |first| %>
@@ -26,3 +27,4 @@
 	<% end %>
 	<li><%= link_to '+', new_first_path %></li>
 <% end %>
+</ul>

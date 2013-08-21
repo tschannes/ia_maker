@@ -1,18 +1,17 @@
 class Level1sController < ApplicationController
 
+	def new
+		level0 = Level0.find(params[:first_id])
+		@item = level0.level1s.build
+	end
+
 	def index
 		@items = Level1.all
-		@items.seconds = @item.level2s.build
 	end
 
 	def show
 		items = Level1.find(params[:id])
 		@items = Array(items)
-	end
-
-	def new
-		level0 = Level0.find(params[:first_id])
-		@item = level0.level1s.build
 	end
 
 	def edit

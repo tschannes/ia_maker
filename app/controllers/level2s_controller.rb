@@ -12,7 +12,6 @@ class Level2sController < ApplicationController
 	def new
 		level1 = Level1.find(params[:second_id])
 		@item = level1.level2s.build
-
 	end
 
 	def create

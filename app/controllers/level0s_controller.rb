@@ -63,4 +63,11 @@ class Level0sController < GenericController
 	# 	params.require(:level0).permit(:title, :overview, :description)
 	# end
 
+	def start
+		respond_to do |format|
+			format.html { render 'shared/start' }
+		end
+		#render 'shared/start'
+	end
+
 end

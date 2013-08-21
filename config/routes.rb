@@ -11,5 +11,6 @@ IaMaker::Application.routes.draw do
 	get "signup" => "users#new", :as => "signup"
 	resources :users
 	resources :sessions
+	get 'start' => 'level0s#start', :as => 'start'
 	root to: 'level0s#index'
 end

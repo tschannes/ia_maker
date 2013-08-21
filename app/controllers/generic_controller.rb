@@ -20,8 +20,6 @@ class GenericController < ApplicationController
 
 	def new
 		@item = get_objects.new
-		@level1 = @item.level1s.build
-		@level2 = @level1.level2s.build
 	end
 
 	def edit
@@ -42,7 +40,7 @@ class GenericController < ApplicationController
 
 	def create
 		instance_variable = get_objects.new(level_params)
-		instance_variable.level1s.map do |x|
+		instance_variable.get_children.map do |x|
 			x.level0_id = :first_id
 		end
 		if instance_variable.save
@@ -55,7 +53,7 @@ class GenericController < ApplicationController
 
 	def destroy
 		@item = get_objects.find(params[:id])
-		@subs = @item.level1s
+		@subs = @item.get_children
 		@subs.destroy if @subs
 		@item.destroy
 		flash[:alert] = "The item was deleted."
@@ -77,6 +75,10 @@ class GenericController < ApplicationController
 	end
 
 	def get_children
-		
+		string = controller_name.to_s
+		num = string.match(/\d/).to_s.to_i
+		num += 1
+# check this
+		"level#{num}s".constantize 
 	end
 end

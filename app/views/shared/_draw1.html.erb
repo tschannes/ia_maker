@@ -9,12 +9,12 @@
 								<% second.level2s.each do |third| %>
 									<li><%= link_to third.title, first_second_third_path(params[:id], second.id, third.id) %></li>
 								<% end %>
-									<li><%= link_to '+', new_first_second_third_path(params[:id], second.id) %></li>
+									<li><%= link_to '+', new_first_second_third_path(params[:id], second.id) if logged_in? %></li>
 								<% end %>
 							</ul>
 						</li>
 				<% end %>
-					<li><%= link_to '+', new_first_second_path(params[:id]) %></li>
+					<li><%= link_to '+', new_first_second_path(params[:id]) if logged_in? %></li>
 				</ul>
 			</li>
 		<% end %>

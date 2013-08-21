@@ -5,7 +5,7 @@ class Level2sController < ApplicationController
 	end
 
 	def show
-		item = Level1.find(params[:id])
+		item = Level2.find(params[:id])
 		@items = Array(item)
 	end
 
@@ -26,7 +26,7 @@ class Level2sController < ApplicationController
 	end
 
 	def edit
-		@item = Level0.find(params[:first_id]).level1s.find(params[:second_id]).level2s.find(params[:id])
+		@item = Level2.find(params[:id])
 		
 		respond_to do |format|
 			format.html # show.html.erb

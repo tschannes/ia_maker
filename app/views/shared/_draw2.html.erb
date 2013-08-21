@@ -3,6 +3,6 @@
 	<% @items.each do |third| %>
 		<li><%= link_to third.title, first_second_third_path(params[:first_id], params[:second_id], params[:id]) %></li>
 	<% end %>
-	<li><%= link_to '+', new_first_second_third_path(params[:first_id], params[:second_id]) %></li>
+	<li><%= link_to '+', new_first_second_third_path(params[:first_id], params[:second_id]) if logged_in? %></li>
 <% end %>
 </ul>

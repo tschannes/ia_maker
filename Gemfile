@@ -23,8 +23,8 @@ gem 'jquery-rails'
 gem 'sorcery'
 
 #development
-gem 'better_errors'
-gem 'pry'
+gem 'better_errors', group: :development
+gem 'pry', group: :development
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -32,9 +32,16 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# serializes rails models for API
+gem 'active_model_serializers'
+
+# in place editing
+gem 'best_in_place'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  #gem 'sdoc', require: true
+  gem 'bdoc', require: true
 end
 
 # Use ActiveModel has_secure_password

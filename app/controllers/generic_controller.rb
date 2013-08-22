@@ -1,10 +1,5 @@
 class GenericController < ApplicationController
-	# def show
-	# 	instance_variable = instance_variable_get("@#{controller_name.singularize}")
-
-	# 	@items = Array(instance_variable)
-	# end
-
+	
 	def index
 		@items = get_objects.all
 		respond_to do |format|
@@ -79,7 +74,6 @@ class GenericController < ApplicationController
 		string = controller_name.to_s
 		num = string.match(/\d/).to_s.to_i
 		num += 1
-# check this
 		get_children = "level#{num}s" 
 	end
 end

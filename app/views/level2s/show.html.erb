@@ -11,7 +11,7 @@
 	<p class="lead"><%= @items.first.overview %></p>
 
 	<p><%= @items.first.description %></p>
-	<%= link_to 'go back', root_path, class: 'btn btn-primary' %>
+	<%= link_to 'go back', ia_path, class: 'btn btn-primary' %>
 	<%= link_to 'edit', edit_first_second_third_path(:params => params), class: 'btn btn-primary' %>
 	<%= link_to 'delete', first_second_third_path(:params => params), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-primary ' %>
 </div>

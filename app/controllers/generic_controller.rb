@@ -8,8 +8,9 @@ class GenericController < ApplicationController
 	def index
 		@items = get_objects.all
 		respond_to do |format|
-			format.html { root_path }
-			format.json
+			format.html { ia_path }
+			format.json { render :json => @items }
+			format.xml { render :xml => @items }
 		end
 	end
 
@@ -30,7 +31,7 @@ class GenericController < ApplicationController
 		@item = get_objects.find(params[:id])
 		respond_to do |format|
 			if @item.update_attributes(level_params)
-				format.html { redirect_to root_path,
+				format.html { redirect_to ia_path,
 				notice: 'item was successfully updated.' }
 			else
 				format.html { render action: "edit" }
@@ -40,12 +41,12 @@ class GenericController < ApplicationController
 
 	def create
 		instance_variable = get_objects.new(level_params)
-		instance_variable.get_children.map do |x|
+		instance_variable.send(get_children).map do |x|
 			x.level0_id = :first_id
 		end
 		if instance_variable.save
 			flash[:notice] = "Successfully added stuff"
-			redirect_to root_path
+			redirect_to ia_path
 		else
 			render :action => :new, notice: "Something did not work as planned."
 		end
@@ -53,17 +54,17 @@ class GenericController < ApplicationController
 
 	def destroy
 		@item = get_objects.find(params[:id])
-		@subs = @item.get_children
+		@subs = @item.send(get_children)
 		@subs.destroy if @subs
 		@item.destroy
 		flash[:alert] = "The item was deleted."
-		redirect_to root_path
+		redirect_to ia_path
 	end
 
 	private
 
 	def level_params
-		params.require(:level0).permit(:title, :overview, :description)
+		params.require(controller_name.singularize.to_sym).permit(:title, :overview, :description)
 	end
 
 	def get_objects
@@ -79,6 +80,6 @@ class GenericController < ApplicationController
 		num = string.match(/\d/).to_s.to_i
 		num += 1
 # check this
-		"level#{num}s".constantize 
+		get_children = "level#{num}s" 
 	end
 end

@@ -3,13 +3,10 @@
 </div>
 
 <div class="well well-large span4">
+	<%= render 'shared/item_show' %>
 
-	<h2><%= @items.first.title %></h2>
-
-	<p class="lead"><%= @items.first.overview %></p>
-
-	<p><%= @items.first.description %></p>
-	<%= link_to 'go back', ia_path, class: 'btn btn-primary' %>
+	<% if logged_in? %>
 	<%= link_to 'edit', edit_first_second_path(params[:first_id], @items.first.id), class: 'btn btn-primary' %>
 	<%= link_to 'delete', first_second_path(params[:first_id], params[:id]), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-primary ' %>
+	<% end %>
 </div>

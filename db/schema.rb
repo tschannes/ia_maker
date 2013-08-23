@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20130823022405) do
   create_table "quicklinks", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "link_title"
-    t.string   "link_subtitle"
-    t.text     "link_description"
+    t.string   "title"
+    t.string   "overview"
+    t.text     "description"
   end
 
   create_table "sessions", force: true do |t|

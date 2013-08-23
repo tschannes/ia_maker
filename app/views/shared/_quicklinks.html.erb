@@ -1,8 +1,9 @@
 <ul id="utilityNav">
-	<% unless @quicklinks.nil? %>
+	
 	<% @quicklinks.each do |link| %>
-		<li><%= link_to link.link_title, quicklink_path %></li>
+		<li><%= link_to link.title, quicklink_path(link.id) %></li>
 	<% end %>
+	<% if logged_in? %>
+	<li><%= link_to '+', new_quicklink_path %></li>
 	<% end %>
-	<li><%= link_to '±', new_quicklink_path %></li>
 </ul>

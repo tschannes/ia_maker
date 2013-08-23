@@ -1,0 +1,12 @@
+<div class="span7">
+	<%= render 'shared/quicklinks' %>
+</div>
+
+<div class="well well-large span4">
+	<%= render 'shared/item_show' %>
+
+	<% if logged_in? %>
+	<%= link_to 'edit', edit_quicklink_path(:params => params), class: 'btn btn-primary' %>
+	<%= link_to 'delete', quicklink_path(:params => params), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-primary ' %>
+	<% end %>
+</div>

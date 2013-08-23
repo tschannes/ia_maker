@@ -15,7 +15,3 @@
 //= require bootstrap.min
 
 //= require_tree .
-
-
-= require jquery.purr
-= require best_in_place

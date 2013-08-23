@@ -1,16 +1,21 @@
-<%= form_for @quicklink, :url => { :action => "update" } do |f| %>
-	  <h2><%= @quicklink.link_title %></h2>
+<%= form_for @quicklink do |f| %>
+	  <h2><%= @quicklink.title %></h2>
 	  <p>
-	    <%= f.label :link_title, class: 'lead' %>
-	    <%= f.text_field :link_title, class: 'span8' %>
+	    <%= f.label :title, class: 'lead' %>
+	    <%= f.text_field :title, class: 'span8' %>
 	  </p>
 	 
 	  <p>
-	    <%= f.label :link_subtitle, class: 'lead' %>
-	    <%= f.text_field :link_subtitle, class: 'span8' %>
+	    <%= f.label :overview, class: 'lead' %>
+	    <%= f.text_field :overview, class: 'span8' %>
 	  </p>
 
 	  <p>
-	    <%= f.submit "save #{@quicklink.link_title}", { :class => 'btn btn-primary' } %>
+	    <%= f.label :description, class: 'lead' %>
+	    <%= f.text_field :description, class: 'span8' %>
+	  </p>
+
+	  <p>
+	    <%= f.submit "save #{@quicklink.title}", { :class => 'btn btn-primary' } %>
 	  </p>
 <% end %>

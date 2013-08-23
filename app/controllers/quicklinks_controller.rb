@@ -7,14 +7,13 @@ class QuicklinksController < ApplicationController
 	end
 
 	def create
-		@quicklink = Quicklink.new(quicklink_params)
+		@quicklink = Quicklink.new(link_params)
 		if @quicklink.save
 			flash[:notice] = "Successfully added stuff"
 			redirect_to ia_path
 		else
 			render :action => :new, notice: "Something did not work as planned."
 		end
-	
 	end
 
 	def edit
@@ -25,28 +24,30 @@ class QuicklinksController < ApplicationController
 		@quicklink = Quicklink.find(params[:id])
 		if @quicklink.update_attributes(link_params)
 			redirect_to ia_path,
-			notice: 'quicklink-Header was successfully updated.' 
+			notice: 'Quicklink-Header was successfully updated.' 
 		else
 			render action: "edit"
 		end
 	end
 
-	def index
-		unless @quicklinks.nil?
-			@quicklinks = Quicklink.all
-			render 'level0s'
-		end
+	def show
+		@quicklinks = Quicklink.all
+		quicklink = Quicklink.find(params[:id])
+		@items = Array(quicklink)
 	end
 
 	def destroy
-		
+		quicklink = Quicklink.find(params[:id])
+		quicklink.destroy
+		flash[:warning] = "Successfully deleted" + quicklink.title
+		redirect_to ia_path
 	end
 
 
 	protected
 
 	def link_params
-		require(:quicklinks).permit(:link_title, :link_subtitle, :link_description)
+		params.require(:quicklink).permit(:title, :subtitle, :description)
 	end
 
 end

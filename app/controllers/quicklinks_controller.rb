@@ -1,0 +1,2 @@
+class QuicklinksController < ApplicationController
+end

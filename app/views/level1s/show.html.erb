@@ -1,4 +1,4 @@
-<div class="span8">
+<div class="span7">
 	<%= render 'shared/draw1' %>
 </div>
 
@@ -11,5 +11,5 @@
 	<p><%= @items.first.description %></p>
 	<%= link_to 'go back', ia_path, class: 'btn btn-primary' %>
 	<%= link_to 'edit', edit_first_second_path(params[:first_id], @items.first.id), class: 'btn btn-primary' %>
-	<%= link_to 'delete', first_path(@item), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-primary ' %>
+	<%= link_to 'delete', first_second_path(params[:first_id], params[:id]), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-primary ' %>
 </div>

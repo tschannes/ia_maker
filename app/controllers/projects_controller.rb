@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+	respond_to :html, :json
+
 	def new
 		@project = Project.new
 	end
@@ -21,18 +23,17 @@ class ProjectsController < ApplicationController
 
 	def update
 		@project = Project.first
-		respond_to do |format|
-			if @project.update_attributes(project_params)
-				format.html { redirect_to ia_path,
-				notice: 'Project was successfully updated.' }
-			else
-				format.html { render action: "edit" }
-			end
+		if @project.update_attributes(project_params)
+			redirect_to ia_path,
+			notice: 'Project-Header was successfully updated.' 
+		else
+			render action: "edit"
 		end
 	end
 
 	def show
 		@project = Project.first
+		render 'level0s'
 	end
 
 	private

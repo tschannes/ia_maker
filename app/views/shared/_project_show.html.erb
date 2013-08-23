@@ -1,6 +1,6 @@
 <% if @project %>
-	<h1><%= @project.project_title %></h1>
-	<h2><%= @project.project_subtitle %></h2>
+	<h1><%= best_in_place @project, :project_title %></h1>
+	<h2><%= best_in_place @project, :project_subtitle %></h2>
 <% end %>
 <% if logged_in? %>
 <%= link_to 'edit project info', edit_project_path(0), :class => 'btn' %>

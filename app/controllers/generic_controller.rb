@@ -1,7 +1,9 @@
 class GenericController < ApplicationController
 	
+	require 'application_helper'
+
 	def index
-		@items = get_objects.all
+		@items = collection.all
 		respond_to do |format|
 			format.html { ia_path }
 			format.json { render :json => @items }
@@ -10,20 +12,20 @@ class GenericController < ApplicationController
 	end
 
 	def show
-		item = get_objects.find(params[:id])
+		item = collection.find(params[:id])
 		@items = Array(item)
 	end
 
 	def new
-		@item = get_objects.new
+		@item = collection.new
 	end
 
 	def edit
-		@item = get_objects.find(params[:id])
+		@item = collection.find(params[:id])
 	end
 
 	def update
-		@item = get_objects.find(params[:id])
+		@item = collection.find(params[:id])
 		respond_to do |format|
 			if @item.update_attributes(level_params)
 				format.html { redirect_to ia_path,
@@ -35,11 +37,7 @@ class GenericController < ApplicationController
 	end
 
 	def create
-		instance_variable = get_objects.new(level_params)
-		instance_variable.send(get_children).map do |x|
-			x.level0_id = :first_id
-		end
-		if instance_variable.save
+		if collection.save
 			flash[:notice] = "Successfully added stuff"
 			redirect_to ia_path
 		else
@@ -48,22 +46,20 @@ class GenericController < ApplicationController
 	end
 
 	def destroy
-		@item = get_objects.find(params[:id])
-		@subs = @item.send(get_children)
-		@subs.destroy if @subs
-		@item.destroy
+		item = collection.find(params[:id])
+		if item.respond_to?("send(get_children")
+			@subs = item.send(get_children)
+			@subs.destroy
+		end
+		item.destroy
 		flash[:alert] = "The item was deleted."
 		redirect_to ia_path
 	end
 
-	private
+	protected
 
 	def level_params
 		params.require(controller_name.singularize.to_sym).permit(:title, :overview, :description)
-	end
-
-	def get_objects
-		controller_name.singularize.capitalize.constantize
 	end
 
 	def instance_variable
@@ -73,7 +69,24 @@ class GenericController < ApplicationController
 	def get_children
 		string = controller_name.to_s
 		num = string.match(/\d/).to_s.to_i
-		num += 1
+		num += 1 if num < 2
 		get_children = "level#{num}s" 
 	end
+
+	def parent_id
+		string = controller_name.to_s
+		parent_id = string.to_s + "_id"
+		parent_id
+	end
+
+	def collection
+		if controller_name == "level2s"
+			collection = Level0.find(params[:first_id]).level1s.find(params[:second_id]).level2s
+		elsif controller_name == "level1s"
+			collection = Level0.find(params[:first_id]).level1s
+		elsif controller_name == "level0s"
+			collection = Level0
+		end
+	end
+
 end

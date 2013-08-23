@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822153359) do
+ActiveRecord::Schema.define(version: 20130823022405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,9 @@ ActiveRecord::Schema.define(version: 20130822153359) do
   create_table "quicklinks", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_title"
+    t.string   "link_subtitle"
+    t.text     "link_description"
   end
 
   create_table "sessions", force: true do |t|

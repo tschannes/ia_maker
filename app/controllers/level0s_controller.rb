@@ -5,4 +5,10 @@ class Level0sController < GenericController
 		super
 	end
 
+	protected
+
+	def collection
+		collection = Level0
+	end
+
 end

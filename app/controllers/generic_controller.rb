@@ -37,7 +37,8 @@ class GenericController < ApplicationController
 	end
 
 	def create
-		if collection.save
+		item = collection.new(level_params)
+		if item.save
 			flash[:notice] = "Successfully added stuff"
 			redirect_to ia_path
 		else
@@ -77,16 +78,6 @@ class GenericController < ApplicationController
 		string = controller_name.to_s
 		parent_id = string.to_s + "_id"
 		parent_id
-	end
-
-	def collection
-		if controller_name == "level2s"
-			collection = Level0.find(params[:first_id]).level1s.find(params[:second_id]).level2s
-		elsif controller_name == "level1s"
-			collection = Level0.find(params[:first_id]).level1s
-		elsif controller_name == "level0s"
-			collection = Level0
-		end
 	end
 
 end

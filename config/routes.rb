@@ -6,6 +6,7 @@ IaMaker::Application.routes.draw do
 			end
 		end
 	end
+
 	get "logout" => "sessions#destroy", :as => "logout"
 	get "login" => "sessions#new", :as => "login"
 	get "signup" => "users#new", :as => "signup"
@@ -13,6 +14,7 @@ IaMaker::Application.routes.draw do
 	resources :sessions
 	
 	resources :projects
+	resources :quicklinks
 
 	get 'level0s' => 'level0s#index', :as => 'ia'
 	root to: 'level0s#start'

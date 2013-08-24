@@ -16,4 +16,8 @@ module ApplicationHelper
 		end
 	end
 
+	def display_errors(object)
+		render 'shared/error', :object => object
+	end
+
 end

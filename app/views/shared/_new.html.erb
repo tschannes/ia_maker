@@ -1,4 +1,5 @@
 <%= form_for @item, :url => { :action => "create" } do |f| %>
+<%= display_errors(@item) %>
   <h2>New entry</h2>
 	  <p>
 	    <%= f.label :title, class: 'lead' %>

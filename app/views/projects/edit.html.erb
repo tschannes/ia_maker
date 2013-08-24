@@ -1,4 +1,5 @@
 <%= form_for @project, :url => { :action => "update" } do |f| %>
+	<%= display_errors(@project) %>
 	  <h2><%= @project.project_title %></h2>
 	  <p>
 	    <%= f.label :project_title, class: 'lead' %>

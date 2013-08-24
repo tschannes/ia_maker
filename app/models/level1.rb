@@ -4,9 +4,5 @@ class Level1 < ActiveRecord::Base
 
 	accepts_nested_attributes_for :level2s, :allow_destroy => true
 
-	def level1_attributes=(level1_attributes)
-		level1_attributes.each do |attributes|
-			level1s.build(attributes)
-		end
-	end
+	validates_presence_of :title
 end

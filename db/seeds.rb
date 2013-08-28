@@ -14,11 +14,6 @@ first = Level0.create!(
 	overview: "all there is to know about us",
 	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis."
 	)
-some = Level0.create!(
-	title: "Something",
-	overview: "Something more",
-	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis."
-	)
 second = Level1.create!(
 	title: "company",
 	overview: "all about the company",
@@ -31,9 +26,10 @@ third = Level2.create!(
 	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis.",
 	level1_id: second.id
 	)
-dude = Level2.create!(
-	title: "the Queen",
-	overview: "interview with the queen in charge",
-	description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita molestias quam aspernatur iusto pariatur doloremque consequuntur facere obcaecati maxime. Enim, sed laudantium in atque itaque dicta aperiam vero omnis.",
-	level1_id: third.id
+project = Project.create!(
+	project_title: "title",
+	project_subtitle: "title"
+	)
+quicklink = Quicklink.create!(
+	title: "title"
 	)

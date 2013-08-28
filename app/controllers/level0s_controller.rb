@@ -5,11 +5,12 @@ class Level0sController < ApplicationController
 	def index
 		@project = Project.first
 		@quicklinks = Quicklink.all
-		@items = collection.all
+		# @items = collection.all
+		# export
+		@items = Level0.all.sort_by(&:created_at)
 		respond_to do |format|
-			format.html { ia_path }
+			format.html
 			format.json { render :json => @items }
-			format.xml { render :xml => @items }
 		end
 	end
 
@@ -73,7 +74,7 @@ class Level0sController < ApplicationController
 		string = controller_name.to_s
 		num = string.match(/\d/).to_s.to_i
 		num += 1 if num < 2
-		get_children = "level#{num}s" 
+		get_children = "level#{num}s"
 	end
 
 	def parent_id
@@ -85,5 +86,12 @@ class Level0sController < ApplicationController
 	def collection
 		collection = Level0
 	end
+
+	# def export_json
+	# 	@items = Level0.all
+	# 	 render :json => @items.to_json(:include => { :level1s => { :include => :level2s }})
+	#    # render :json => @items.to_json(:include => { :modelb => { :include => :modelc }})
+
+	# end
 
 end

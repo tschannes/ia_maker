@@ -18,11 +18,11 @@
 	<div class="navbar navbar-fixed-top navbar-inverse">
 	
 	  <div class="navbar-inner">
-	    <%=  link_to "draft_ia", root_path, :class => 'brand' %>
+	    <%=  link_to "draft_ia", ia_path, :class => 'brand' %>
 	    <ul class="nav pull-right">
 	      <!-- <li class="active"><a href="#" >Login</a></li> -->
 	      <% if current_user %>
-  			
+  			<a href="" class="btn btn-inverse" id="view">View IA</a>
   			<%= link_to "Log out", logout_path, :class => 'btn btn-inverse' %>
 		  <% else %>
 			<%= link_to "register", signup_path, :class => 'btn btn-inverse' %>

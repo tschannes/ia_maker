@@ -8,3 +8,6 @@ $(document).ready ->
     $(this).css "opacity", 0.5
 
   $("#primaryNav li").css "width", container_width
+
+  $('#view').click ->
+  	$("ul li a:contains(+)").css("display", "none")
